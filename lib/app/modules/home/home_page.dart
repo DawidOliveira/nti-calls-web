@@ -53,7 +53,7 @@ class HomePage extends GetView<HomeController> {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 8.0, horizontal: 8.0),
                                 child: Text(
-                                  'Nenhum chamado encontrado!',
+                                  'Nenhum chamado encontrado.',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.notoSans(
                                     color: Theme.of(context).disabledColor,
