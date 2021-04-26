@@ -31,8 +31,8 @@ Instalação
 
 ```
 $ git clone https://github.com/DawidOliveira/nti-calls-web.git
-cd nti-calls-web
-code . 
+$ cd nti-calls-web
+$ code . 
 ```
 
 Após abrir o Visual Studio Code, aperte F5 para compilar e executar o projeto.
