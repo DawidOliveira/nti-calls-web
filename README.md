@@ -1,16 +1,38 @@
-# nti_calls_web
+<p align="center">Projeto NTI Calls versão web</p>
 
-A new Flutter project.
+ <p align="center">
+ <img src="https://img.shields.io/github/issues/dawidoliveira/nti-calls-web?style=for-the-badge"/>
+ <img src="https://img.shields.io/github/forks/dawidoliveira/nti-calls-web?style=for-the-badge"/>
+ <img src="https://img.shields.io/github/stars/dawidoliveira/nti-calls-web?style=for-the-badge"/>
+ <img src="https://img.shields.io/github/license/dawidoliveira/nti-calls-web?style=for-the-badge"/>
+ </p>
 
-## Getting Started
+## ✅ Descrição do projeto
+Projeto feito para controlar e organizar os chamados do Núcleo de Tecnologia da Informação (NTI).
 
-This project is a starting point for a Flutter application.
+## ✅ Plugins do Vscode
 
-A few resources to get you started if this is your first Flutter project:
+- Dart
+- Dracula Oficial
+- Flutter
+- Material Icon Theme
+- Dart Data Class Generator
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ✅  Instalação
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Necessário:
+
+- [Flutter](flutter.dev) 2.0.5 ou superior
+- Visual Studio Code ou Android Studio
+- Git
+- ❌ Não é necessário instalar Android SDK nem AVD. A partir do Flutter 2.0.5 existe a versão "Chrome" ou "Edge"
+
+Instalação
+
+```
+$ git clone https://github.com/DawidOliveira/nti-calls-web.git
+cd nti-calls-web
+code . 
+```
+
+Após abrir o Visual Studio Code, aperte F5 para compilar e executar o projeto.
