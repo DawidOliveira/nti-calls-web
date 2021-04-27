@@ -23,7 +23,7 @@ class HomeController extends GetxController {
     },
   ];
   final page = 0.obs;
-  final selected = "redes".obs;
+  final selected = "".obs;
   final suggestionList = ["teste1", "teste2", "ateste"].obs;
   final listAux = [
     TaskModel(
@@ -79,9 +79,17 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    await getTasks();
     setSelectedValue = _sr.settings.value.sectorSelected;
+    await getTasks();
+    if (selectedValue == 'configuração') {
+      setPage = 1;
+    }
     selected.listen((value) async {
+      if (selectedValue == 'configuração') {
+        setPage = 1;
+        return;
+      }
+      setPage = 0;
       await getTasks();
     });
   }

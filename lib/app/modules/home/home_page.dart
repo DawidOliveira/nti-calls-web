@@ -19,8 +19,9 @@ class HomePage extends GetView<HomeController> {
             Obx(
               () => Expanded(
                 child: controller.pageValue == 0
-                    ? ContentWidget(controller: controller)
-                    : SettingsPage(),
+                    ? SingleChildScrollView(
+                        child: ContentWidget(controller: controller))
+                    : SingleChildScrollView(child: SettingsPage()),
               ),
             )
           ],

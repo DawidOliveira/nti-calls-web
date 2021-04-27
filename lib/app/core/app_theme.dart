@@ -8,11 +8,13 @@ class AppTheme {
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.WHITE,
     primaryColor: AppColors.BLUE,
+    dividerColor: Colors.transparent,
   );
 
   static ThemeData themeDark = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.BLACK,
     primaryColor: AppColors.BLUE,
+    dividerColor: Colors.transparent,
   );
 }

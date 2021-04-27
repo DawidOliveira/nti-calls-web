@@ -27,7 +27,7 @@ class SettingsRepository {
     settings.value = SettingsModel.fromMap((await _ls.getData("settings") ??
         {
           'isDark': true,
-          'sectorSelected': '',
+          'sectorSelected': 'sistemas',
         }));
   }
 }

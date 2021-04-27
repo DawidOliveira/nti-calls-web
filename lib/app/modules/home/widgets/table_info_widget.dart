@@ -16,9 +16,9 @@ class TableInfoWidget extends StatelessWidget {
         0: FixedColumnWidth(size.width * .5),
       },
       border: TableBorder(
-        verticalInside: BorderSide(width: 1),
-        horizontalInside: BorderSide(),
-        bottom: BorderSide(),
+        verticalInside: BorderSide(color: AppColors.GREY),
+        bottom: BorderSide(color: AppColors.GREY),
+        top: BorderSide(color: AppColors.GREY),
       ),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: [
@@ -28,7 +28,8 @@ class TableInfoWidget extends StatelessWidget {
           ),
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
               child: Text(
                 "Descrição do problema",
                 textAlign: TextAlign.center,
