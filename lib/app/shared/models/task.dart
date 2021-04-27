@@ -2,6 +2,7 @@ import 'dart:convert';
 
 enum TaskStatus {
   pending,
+  in_progress,
   done,
 }
 
