@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nti_calls_web/app/core/core.dart';
 import 'package:nti_calls_web/app/modules/home/home_controller.dart';
-import 'package:nti_calls_web/app/modules/home/widgets/table_info_widget.dart';
-import 'package:nti_calls_web/app/modules/home/widgets/table_row_widget.dart';
 import 'package:nti_calls_web/app/shared/models/task.dart';
 
 class SectionTileWidget extends StatefulWidget {
@@ -55,82 +54,103 @@ class _SectionTileWidgetState extends State<SectionTileWidget> {
           Obx(
             () => Column(
               children: [
-                TableInfoWidget(size: MediaQuery.of(context).size),
-                Table(
-                  columnWidths: {
-                    0: FixedColumnWidth(widget.size.width * .5),
-                  },
-                  border: TableBorder(
-                    verticalInside: BorderSide(color: AppColors.GREY),
-                    horizontalInside: BorderSide(color: AppColors.GREY),
-                  ),
-                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                  children: widget.controller.filteredTasks
-                      .where((e) =>
-                          e.status == configStatus[widget.status] &&
-                          e.setor == widget.controller.selectedValue)
-                      .toList()
-                      .map(
-                        (e) => TableRow(
-                          children: [
-                            TableRowWidget(
-                              item: Text(
-                                e.desc,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            TableRowWidget(
-                              item: Text(
-                                e.place,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            TableRowWidget(
-                              item: Text(
-                                e.username,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            TableRowWidget(
-                              item: Text(
-                                DateFormat("dd/MM/yyyy").format(e.createdAt),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            TableRowWidget(
-                              item: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    icon: Icon(Icons.arrow_forward),
-                                    tooltip: "Próximo passo",
-                                    onPressed: () {},
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SizedBox(
+                      child: DataTable(
+                        headingTextStyle: AppTextStyles.headingTable,
+                        columns: [
+                          DataColumn(
+                            label: Text('Descrição do problema'),
+                          ),
+                          DataColumn(
+                            label: Text('Local'),
+                          ),
+                          DataColumn(
+                            label: Text('Usuário'),
+                          ),
+                          DataColumn(
+                            label: Text('Data da solicitação'),
+                          ),
+                          DataColumn(
+                            label: Container(),
+                          ),
+                        ],
+                        rows: widget.controller.filteredTasks
+                            .where((e) =>
+                                e.status == configStatus[widget.status] &&
+                                e.setor == widget.controller.selectedValue)
+                            .toList()
+                            .map(
+                              (e) => DataRow(
+                                cells: [
+                                  DataCell(
+                                    Text(
+                                      e.desc,
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
-                                  IconButton(
-                                    icon: Icon(Icons.delete,
-                                        color: AppColors.RED),
-                                    tooltip: 'Deletar chamado',
-                                    onPressed: () {},
+                                  DataCell(
+                                    Text(
+                                      e.place,
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
+                                  DataCell(
+                                    Text(
+                                      e.username,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Text(
+                                      DateFormat("dd/MM/yyyy HH:mm")
+                                          .format(e.createdAt),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.arrow_forward),
+                                          tooltip: "Próximo passo",
+                                          onPressed: () {},
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.delete,
+                                              color: AppColors.RED),
+                                          tooltip: 'Deletar chamado',
+                                          onPressed: () {},
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
         ],
         backgroundColor: AppColors.TILE_COLOR,
-        title: Text.rich(
-          TextSpan(text: "${configLabel[widget.status]}", children: [
-            TextSpan(
-                text:
-                    " (${widget.controller.filteredTasks.where((e) => e.status == (configStatus[widget.status])).length})"),
-          ]),
+        title: Obx(
+          () => Text.rich(
+            TextSpan(text: "${configLabel[widget.status]}", children: [
+              TextSpan(
+                  text:
+                      " (${widget.controller.filteredTasks.where((e) => e.status == (configStatus[widget.status])).length})"),
+            ]),
+          ),
         ),
         collapsedBackgroundColor: AppColors.TILE_COLOR,
       ),

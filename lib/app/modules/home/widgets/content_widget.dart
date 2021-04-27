@@ -12,10 +12,9 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height,
-      width: size.width,
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           AutoCompleteTextFieldWidget(controller: controller),
           SizedBox(

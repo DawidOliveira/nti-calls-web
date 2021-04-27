@@ -117,6 +117,24 @@ class HomeController extends GetxController {
           .toList();
   }
 
+  void addTest() {
+    final status = {
+      'done': TaskStatus.done,
+      'pending': TaskStatus.pending,
+      'in_progress': TaskStatus.in_progress,
+    };
+    final test = TaskModel(
+        id: 'id',
+        username: 'username',
+        setor: 'redes',
+        desc: 'desc',
+        place: 'place',
+        status: TaskStatus.done,
+        createdAt: DateTime.now());
+    tasks.add(test);
+    updateCountDone();
+  }
+
   Future getTasks() async {
     tasks.value = [
       ...listAux.where((element) => element.setor == selected.value).toList(),
