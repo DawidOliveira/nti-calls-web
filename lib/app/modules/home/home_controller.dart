@@ -133,6 +133,7 @@ class HomeController extends GetxController {
         createdAt: DateTime.now());
     tasks.add(test);
     updateCountDone();
+    ascendingList();
   }
 
   Future getTasks() async {
@@ -147,10 +148,16 @@ class HomeController extends GetxController {
     updateCountInProgress();
     updateCountDone();
     updateSuggestionList();
+    ascendingList();
   }
 
   void updateSuggestionList() {
     suggestionList.value = tasks.map((e) => e.desc).toList();
+  }
+
+  void ascendingList() {
+    tasks.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+    filteredTasks.sort((a, b) => a.createdAt.compareTo(b.createdAt));
   }
 
   void updateCountPending() {
